@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        ol,ul,li{list-style:none;}
+        #wrap{padding:40px 20px;}
+
+        .box{display:block;width: 50px;height: 50px;position: relative;border-radius: 6px;margin-top: 4px;display: inline-block;line-height: 50px;text-align: center;color: #333;}
+        .black{background:#000;color:#fff;}
+        .pink{background:pink;}
+        .purple{background:purple;}
+        .circle{border-radius:100%;}
+    </style>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" ></script><!-- 스크립트 로드 방식 -->
+</head>
+<body>
+    <!-- wrap (s) -->
+    <div id="wrap">
+        <h2 class="title">gsap.to() Basic Usage</h2>
+        <div class="box circle black">원</div>
+        <div class="box pink"></div>
+        <div class="box purple"></div>
+    </div>
+    <!-- wrap (e) -->
+    <script>
+        gsap.to("h2.title", {duration: 1, opacity: 0.3});
+        gsap.to(".circle", {duration: 1, rotation: 360});
+        gsap.fromTo(".purple", {width: 0, height: 0}, {duration: 1.5, width: 100, height: 200});
+    </script>
+</body>
+</html>
