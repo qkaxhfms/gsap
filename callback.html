@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+    <style>
+        /* reset */
+        *{margin:0;padding:0;box-sizing:border-box;}
+        ol,ul,li{list-style:none;}
+        body{font:400 12px/1.2 "arial";}
+
+        /*layout*/
+        #wrap{padding:40px 20px;}
+        .list-circle{}
+        .list-circle li{margin:0.4rem 0;}
+        /*circle*/
+        .circle{width:50px;height:50px;background:#000;color:#fff;border-radius:100%;line-height:50px;text-align:center;}
+        
+        /*example*/
+        .orange{background:orange;}
+        .green{background:green;}
+        .gray{background:gray;}
+    </style>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" ></script><!-- 스크립트 로드 방식 -->
+</head>
+<body>
+    <!-- wrap (s) -->
+    <div id="wrap">
+        <h2 class="title">easing</h2>
+        <ul class="list-circle">
+            <li><div class="circle orange">원</div></li>
+            <li><div class="circle green">원</div></li>
+            <li><div class="circle gray">원</div></li>
+        </ul>
+    </div>
+    <!-- wrap (e) -->
+    <script>
+        var pratice = gsap.timeline({duration:1, x:200, repeat: 30, repeatDelay: 1});
+
+        //add 3 tweens that will play in direct succession.
+        pratice.to(".orange", {scale: 0.2});
+        pratice.to(".green", {rotation:150}, "+=1");
+        pratice.to(".gray", {scale: 2, y: 20});
+    </script>
+</body>
+</html>
