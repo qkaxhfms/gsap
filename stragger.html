@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stragger</title>
+    <style>
+        /* reset */
+        *{margin:0;padding:0;box-sizing:border-box;}
+        ol,ul,li{list-style:none;}
+        body{font:400 12px/1.2 "arial";}
+
+        /*layout*/
+        #wrap{padding:40px 20px;}
+        .list-circle{}
+        .list-circle li{display:inline-block;margin:0.4rem 0;}
+        /*circle*/
+        .circle{width:50px;height:50px;background:#000;color:#fff;border-radius:100%;line-height:50px;text-align:center;}
+        
+        /*example*/
+        .orange{background:orange;}
+        .pink{background:pink;}
+        .blueviolet{background:blueviolet;}
+        .brown{background:brown;}
+        .red{background:red;}
+        .gray{background:gray;}
+        .blue{background:blue;}
+        .green{background:green;}
+    </style>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" ></script><!-- 스크립트 로드 방식 -->
+</head>
+<body>
+    <!-- wrap (s) -->
+    <div id="wrap">
+        <h2 class="title">easing</h2>
+        <ul class="list-circle">
+            <li><div class="circle orange">원</div></li>
+            <li><div class="circle pink">원</div></li>
+            <li><div class="circle blueviolet">원</div></li>
+            <li><div class="circle brown">원</div></li>
+            <li><div class="circle red">원</div></li>
+            <li><div class="circle gray">원</div></li>
+            <li><div class="circle blue">원</div></li>
+            <li><div class="circle green">원</div></li>
+        </ul>
+    </div>
+    <!-- wrap (e) -->
+    <script>
+        gsap.from(".circle", {
+            duration: 2,
+            scale: 0.5, 
+            opacity: 0, 
+            delay: 0.5, 
+            stagger: 0.2,
+            ease: "elastic", 
+            force3D: true
+        });
+
+        document.querySelectorAll(".circle").forEach(function(circle) {
+            circle.addEventListener("click", function() {
+                gsap.to(".circle", {
+                duration: 0.5, 
+                opacity: 0, 
+                y: -100, 
+                stagger: 0.1,
+                ease: "back.in"
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ease</title>
+    <style>
+        /* reset */
+        *{margin:0;padding:0;box-sizing:border-box;}
+        ol,ul,li{list-style:none;}
+        body{font:400 12px/1.2 "arial";}
+
+        /*layout*/
+        #wrap{padding:40px 20px;}
+        .list-circle{}
+        .list-circle li{margin:0.4rem 0;}
+        /*circle*/
+        .circle{width:50px;height:50px;background:#000;color:#fff;border-radius:100%;line-height:50px;text-align:center;}
+        
+        /*example*/
+        .elastic{background:orange;}
+        .bounce{background:pink;}
+        .rough{background:blueviolet;}
+        .slow{background:brown;}
+        .steps{background:red;}
+        .circ{background:gray;}
+        .expo{background:blue;}
+        .sine{background:green;}
+    </style>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" ></script><!-- 스크립트 로드 방식 -->
+</head>
+<body>
+    <!-- wrap (s) -->
+    <div id="wrap">
+        <h2 class="title">easing</h2>
+        <ul class="list-circle">
+            <li><div class="circle elastic">원</div></li>
+            <li><div class="circle bounce">원</div></li>
+            <li><div class="circle rough">원</div></li>
+            <li><div class="circle slow">원</div></li>
+            <li><div class="circle steps">원</div></li>
+            <li><div class="circle circ">원</div></li>
+            <li><div class="circle expo">원</div></li>
+            <li><div class="circle sine">원</div></li>
+        </ul>
+    </div>
+    <!-- wrap (e) -->
+    <script>
+        gsap.to(".elastic", {duration: 3.5, x: 300, ease: "elastic"});
+        gsap.to(".bounce", {duration: 3.5, x: 300, ease: "bounce"});
+        gsap.to(".rough", {duration: 3.5, x: 300, ease: "rough"});
+        gsap.to(".slow", {duration: 3.5, x: 300, ease: "slow"});
+        gsap.to(".steps", {duration: 3.5, x: 300, ease: "steps(12)"});
+        gsap.to(".circ", {duration: 3.5, x: 300, ease: "circ.out"});
+        gsap.to(".expo", {duration: 3.5, x: 300, ease: "expo.out"});
+        gsap.to(".sine", {duration: 3.5, x: 300, ease: "sine.out"});
+    </script>
+</body>
+</html>
