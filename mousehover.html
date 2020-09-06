@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mousehover</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        ol,ul,li{list-style:none;}
+
+        /* wrap */
+        #wrap{position:relative;background:#000;height:100vh;}
+
+        /* box */
+        #box{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;box-sizing:border-box;border:1px solid #fff;color:#fff;text-align:center;}
+        #box .txt{position:absolute;width:100%;left:0;top:50%;transform:translateY(-50%);}
+    </style>
+    <!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" ></script>스크립트 로드 방식 -->
+</head>
+<body>
+    <!-- wrap (s) -->
+    <div id="wrap">
+
+        <div id="box">
+            <div class="txt"></div>
+        </div>
+    </div>
+    <!-- wrap (e) -->
+    <script>
+        const box = document.querySelector("#box");
+        const txt = document.querySelector(".txt");
+        box.onmouseover = function(e){
+            console.log("hello");
+            let x = e.clientX;
+            let y = e.clientY;
+            console.log(x);
+            console.log(y);
+            txt.innerHTML = "X좌표는: " + `${x}` + "px" + "<br>" +
+                            "Y좌표는: " + `${y}` + "px";
+        }
+
+        txt.innerHTML = "X좌표는: 아직..." + "<br>" +
+                        "Y좌표는: 아직...";
+
+    </script>
+</body>
+</html>
