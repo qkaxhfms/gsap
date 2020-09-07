@@ -14,7 +14,7 @@
         /* box */
         #box{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;box-sizing:border-box;border:1px solid #fff;color:#fff;text-align:center;}
         #box .txt{position:absolute;width:100%;left:0;top:50%;transform:translateY(-50%);}
-        #box .img{transition:0.1s;position:absolute;width:100%;left:0;top:0;}
+        #box .img{transition:0.45s;position:absolute;width:100%;left:0;top:0;}
     </style>
     <!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" ></script>스크립트 로드 방식 -->
 </head>
@@ -32,7 +32,7 @@
     <script>
         const box = document.querySelector("#box");
         const img = document.querySelector(".img");
-        
+
         box.onmouseover = function(e){
             let x = e.clientX;
             let y = e.clientY;
