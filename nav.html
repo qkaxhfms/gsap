@@ -20,6 +20,7 @@
         .nav .depth1{background:#333;color:#fff;padding:0.85rem 0;}
         .nav .depth1.active{background:#000;}
         .nav .depth2{display:none;}
+        .nav .depth2.active{display:block;}
         .nav .depth2>li{}
         .nav .depth2>li>a{background:#777;color:#fff;}
     </style>
@@ -28,7 +29,7 @@
     <!-- header (s)-->
     <div id="header">
         <ul class="nav">
-            <li>
+            <li class="1">
                 <a class="depth1" href="#javascript;">menu 1</a>
                 <ul class="depth2">
                     <li><a href="#">depth 1-1</a></li>
@@ -37,7 +38,7 @@
                     <li><a href="#">depth 1-4</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="2">
                 <a class="depth1" href="#javascript;">menu 2</a>
                 <ul class="depth2">
                     <li><a href="#">depth 2-1</a></li>
@@ -45,7 +46,7 @@
                     <li><a href="#">depth 2-3</a></li>
                     <li><a href="#">depth 2-4</a></li>
                 </ul></li>
-            <li>
+            <li class="3">
                 <a class="depth1" href="#javascript;">menu 3</a>
                 <ul class="depth2">
                     <li><a href="#">depth 3-1</a></li>
@@ -53,7 +54,7 @@
                     <li><a href="#">depth 3-3</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="4">
                 <a class="depth1" href="#javascript;">menu 4</a>
                 <ul class="depth2">
                     <li><a href="#">depth 4-1</a></li>
@@ -68,9 +69,24 @@
     <script>
         const header = document.querySelector("#header");
         const nav = document.querySelector(".nav");
-        const depth1 = document.querySelectorAll(".depth1");
-        depth1.onclick = function(){
-            console.log("hello");
+        let navLi = document.querySelectorAll(".nav>li");
+        let depth1 = document.querySelectorAll(".depth1");
+        
+        for(let n = 0; n< navLi.length; n++){
+            navLi[n].addEventListener("click",activeMenu);
+        }
+
+        // depth1.classList.remove("active");
+        function activeMenu(){
+            console.log(this);
+
+            for(let i = 0; i< navLi.length; i++){
+                navLi[i].querySelector(".depth1").classList.remove("active");
+                navLi[i].querySelector(".depth2").classList.remove("active");
+            }
+
+            this.querySelector(".depth1").classList.add("active");
+            this.querySelector(".depth2").classList.add("active");
         }
 
     </script>
