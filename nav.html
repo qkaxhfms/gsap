@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav</title>
+    <style>
+        /*reset*/
+        *{margin:0;padding:0;box-sizing:border-box;}
+        ul,li{list-style:none;}
+        a{text-decoration:none;}
+        body{font:400 14px/1.4 'arial';}
+
+        /*header*/
+        #header{position:fixed;top:0;left:0;width:100%;background:#000;}
+        .nav{}
+        .nav a{display:block;text-align:center;}
+        .nav::after{display:block;clear:both;content:'';}
+        .nav>li{float:left;width:25%;}
+        .nav .depth1{background:#333;color:#fff;padding:0.85rem 0;}
+        .nav .depth1.active{background:#000;}
+        .nav .depth2{display:none;}
+        .nav .depth2>li{}
+        .nav .depth2>li>a{background:#777;color:#fff;}
+    </style>
+</head>
+<body>
+    <!-- header (s)-->
+    <div id="header">
+        <ul class="nav">
+            <li>
+                <a class="depth1" href="#javascript;">menu 1</a>
+                <ul class="depth2">
+                    <li><a href="#">depth 1-1</a></li>
+                    <li><a href="#">depth 1-2</a></li>
+                    <li><a href="#">depth 1-3</a></li>
+                    <li><a href="#">depth 1-4</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="depth1" href="#javascript;">menu 2</a>
+                <ul class="depth2">
+                    <li><a href="#">depth 2-1</a></li>
+                    <li><a href="#">depth 2-2</a></li>
+                    <li><a href="#">depth 2-3</a></li>
+                    <li><a href="#">depth 2-4</a></li>
+                </ul></li>
+            <li>
+                <a class="depth1" href="#javascript;">menu 3</a>
+                <ul class="depth2">
+                    <li><a href="#">depth 3-1</a></li>
+                    <li><a href="#">depth 3-2</a></li>
+                    <li><a href="#">depth 3-3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="depth1" href="#javascript;">menu 4</a>
+                <ul class="depth2">
+                    <li><a href="#">depth 4-1</a></li>
+                    <li><a href="#">depth 4-2</a></li>
+                    <li><a href="#">depth 4-3</a></li>
+                    <li><a href="#">depth 4-4</a></li>
+                    <li><a href="#">depth 4-4</a></li>
+                </ul></li>
+        </ul>
+    </div>
+    <!-- header (e) -->
+    <script>
+        const header = document.querySelector("#header");
+        const nav = document.querySelector(".nav");
+        const depth1 = document.querySelectorAll(".depth1");
+        depth1.onclick = function(){
+            console.log("hello");
+        }
+
+    </script>
+</body>
+</html>
