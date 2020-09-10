@@ -77,7 +77,6 @@
         const header = document.querySelector("#header");
         const nav = document.querySelector(".nav");
         let navLi = document.querySelectorAll(".nav>li");
-        let depth1 = document.querySelectorAll(".depth1");
         
         for(let n = 0; n< navLi.length; n++){
             navLi[n].addEventListener("mouseenter",mouseenterMenu);
@@ -85,6 +84,7 @@
             navLi[n].addEventListener("click",activeMenu);
         }
 
+        // mouseenterMenu
         function mouseenterMenu(){
             for(let i = 0; i< navLi.length; i++){
                 navLi[i].classList.remove("active");
@@ -92,12 +92,13 @@
             this.classList.add("active");
         }
 
+        // mouseleaveMenu
         function mouseleaveMenu(){
             for(let i = 0; i< navLi.length; i++){
                 navLi[i].classList.remove("active");
             }
         }
-
+        // activeMenu
         function activeMenu(){
             this.classList.toggle("active");
         }
