@@ -13,23 +13,29 @@
 
         /*header*/
         #header{position:fixed;top:0;left:0;width:100%;background:#000;}
+
+        /* nav */
         .nav{}
         .nav a{display:block;text-align:center;}
         .nav::after{display:block;clear:both;content:'';}
         .nav>li{float:left;width:25%;}
+
         .nav .depth1{background:#333;color:#fff;padding:0.85rem 0;}
-        .nav .depth1.active{background:#000;}
         .nav .depth2{display:none;}
-        .nav .depth2.active{display:block;}
         .nav .depth2>li{}
         .nav .depth2>li>a{background:#777;color:#fff;}
+
+        /* active */
+        .nav .active .depth1{background:#000;}
+        .nav .active .depth2{display:block;}
+
     </style>
 </head>
 <body>
     <!-- header (s)-->
     <div id="header">
         <ul class="nav">
-            <li class="1">
+            <li>
                 <a class="depth1" href="#javascript;">menu 1</a>
                 <ul class="depth2">
                     <li><a href="#">depth 1-1</a></li>
@@ -38,7 +44,7 @@
                     <li><a href="#">depth 1-4</a></li>
                 </ul>
             </li>
-            <li class="2">
+            <li>
                 <a class="depth1" href="#javascript;">menu 2</a>
                 <ul class="depth2">
                     <li><a href="#">depth 2-1</a></li>
@@ -46,7 +52,7 @@
                     <li><a href="#">depth 2-3</a></li>
                     <li><a href="#">depth 2-4</a></li>
                 </ul></li>
-            <li class="3">
+            <li>
                 <a class="depth1" href="#javascript;">menu 3</a>
                 <ul class="depth2">
                     <li><a href="#">depth 3-1</a></li>
@@ -54,7 +60,7 @@
                     <li><a href="#">depth 3-3</a></li>
                 </ul>
             </li>
-            <li class="4">
+            <li>
                 <a class="depth1" href="#javascript;">menu 4</a>
                 <ul class="depth2">
                     <li><a href="#">depth 4-1</a></li>
@@ -62,7 +68,8 @@
                     <li><a href="#">depth 4-3</a></li>
                     <li><a href="#">depth 4-4</a></li>
                     <li><a href="#">depth 4-4</a></li>
-                </ul></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <!-- header (e) -->
@@ -76,17 +83,11 @@
             navLi[n].addEventListener("click",activeMenu);
         }
 
-        // depth1.classList.remove("active");
         function activeMenu(){
-            console.log(this);
-
             for(let i = 0; i< navLi.length; i++){
-                navLi[i].querySelector(".depth1").classList.remove("active");
-                navLi[i].querySelector(".depth2").classList.remove("active");
+                navLi[i].classList.remove("active");
             }
-
-            this.querySelector(".depth1").classList.add("active");
-            this.querySelector(".depth2").classList.add("active");
+            this.classList.add("active");
         }
 
     </script>
