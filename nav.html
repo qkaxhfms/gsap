@@ -80,7 +80,8 @@
         let depth1 = document.querySelectorAll(".depth1");
         
         for(let n = 0; n< navLi.length; n++){
-            navLi[n].addEventListener("click",activeMenu);
+            navLi[n].addEventListener("mouseenter",activeMenu);
+            navLi[n].addEventListener("mouseleave",inactiveMenu);
         }
 
         function activeMenu(){
@@ -88,6 +89,12 @@
                 navLi[i].classList.remove("active");
             }
             this.classList.add("active");
+        }
+
+        function inactiveMenu(){
+            for(let i = 0; i< navLi.length; i++){
+                navLi[i].classList.remove("active");
+            }
         }
 
     </script>
