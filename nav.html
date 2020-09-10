@@ -80,21 +80,26 @@
         let depth1 = document.querySelectorAll(".depth1");
         
         for(let n = 0; n< navLi.length; n++){
-            navLi[n].addEventListener("mouseenter",activeMenu);
-            navLi[n].addEventListener("mouseleave",inactiveMenu);
+            navLi[n].addEventListener("mouseenter",mouseenterMenu);
+            navLi[n].addEventListener("mouseleave",mouseleaveMenu);
+            navLi[n].addEventListener("click",activeMenu);
         }
 
-        function activeMenu(){
+        function mouseenterMenu(){
             for(let i = 0; i< navLi.length; i++){
                 navLi[i].classList.remove("active");
             }
             this.classList.add("active");
         }
 
-        function inactiveMenu(){
+        function mouseleaveMenu(){
             for(let i = 0; i< navLi.length; i++){
                 navLi[i].classList.remove("active");
             }
+        }
+
+        function activeMenu(){
+            this.classList.toggle("active");
         }
 
     </script>
