@@ -13,8 +13,8 @@
 
         /* wrap */
         #wrap{}
-        #wrap .tit1{position:fixed;left:0;top:0;font-size:1.4rem;}
-        #wrap>section{height:100vh;display:flex;align-items:center;}
+        #wrap .tit1{position:fixed;right:0.8rem;top:0.8rem;font-size:2.4rem;}
+        #wrap>section{height:100vh;padding:2.5rem 0.8rem;display:flex;align-items:center;}
         .section-first{background:pink;}
         .section-second{background:skyblue;}
         .section-third{background:cadetblue;}
@@ -44,13 +44,27 @@
     </div>
     <!-- wrap (e) -->
     <script>
+        const secs = document.querySelectorAll('section');
         const tit1 = document.querySelector(".tit1");
+        const len = secs.length;
+        let offs = [];
+
+        //section 높이값 저장
+        let setOffs = () => {
+            secs.forEach((item,index)=>{
+            offs.push(item.offsetTop);
+            })
+            offs.push(secs[len-1].offsetTop+secs[len-1].offsetHeight);
+        }
+
+        setOffs();
 
         window.onscroll = () =>  {
             let scroll = this.scrollY;
-            console.log(scroll);
             tit1.innerHTML = "스크롤 값:" + scroll + "px";
         }
+
+
     </script>
 </body>
 </html>
