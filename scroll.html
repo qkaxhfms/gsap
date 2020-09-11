@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll</title>
+    <style>
+        /*reset*/
+        *{margin:0;padding:0;box-sizing:border-box;}
+        ul,li{list-style:none;}
+        a{text-decoration:none;}
+        body{font:400 14px/1.4 'arial';}
+
+        /* wrap */
+        #wrap{}
+        #wrap .tit1{position:fixed;left:0;top:0;font-size:1.4rem;}
+        #wrap>section{height:100vh;display:flex;align-items:center;}
+        .section-first{background:pink;}
+        .section-second{background:skyblue;}
+        .section-third{background:cadetblue;}
+
+        /* font */
+    </style>
+</head>
+<body>
+    <!-- wrap (s)-->
+    <div id="wrap">
+        <h1 class="tit1">스크롤 값: 0px</h1>
+        <!-- section-first (s) -->
+        <section class="section-first">
+            <h2>section first</h2>
+        </section>
+        <!-- section-first (e) -->
+        <!-- section-second (s) -->
+        <section class="section-second">
+            <h2>section second</h2>
+        </section>
+        <!-- section-second (e) -->
+        <!-- section-third (s) -->
+        <section class="section-third">
+            <h2>section third</h2>
+        </section>
+        <!-- section-third (e) -->
+    </div>
+    <!-- wrap (e) -->
+    <script>
+        const tit1 = document.querySelector(".tit1");
+
+        window.onscroll = () =>  {
+            let scroll = this.scrollY;
+            console.log(scroll);
+            tit1.innerHTML = "스크롤 값:" + scroll + "px";
+        }
+    </script>
+</body>
+</html>
