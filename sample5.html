@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP sample5</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{}
+        .wrap{position:relative;height:5vw;margin:1vw 0;border:1px solid red;}
+        .box{position:absolute;bottom:0;left:0;width:5vw;height:5vw;}
+        /* color */
+        .bgC1{background:red;}
+        .bgC2{background:blue;}
+        .bgC3{background:green;}
+    </style>
+</head>
+<body>
+    <h1>Callback & Param</h1>
+    <p>callback</p>
+    <div class="wrap"><div class="box box1 bgC1"></div></div>
+    <div class="wrap"><div class="box box2 bgC2"></div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script>
+        // callback을 사용할 수 있다.
+        // 매개변수를 활용함으로써 함수를 재사용 할 수 있다.
+        gsap.to(".box1",{
+            x:150,
+            ease:"bounce",
+            duration:2,
+            onStart:showMessage,
+            onStartParams:["1번준비끝"],
+            onComplete:showMessage,
+            onCompleteParams:["1번이동끝"],
+            delay:1
+        })
+
+        gsap.to(".box2",{
+            duration:2,
+            x:150,
+            ease:"bounce",
+            onStart:showMessage,
+            onStartParams:["2번준비끝"],
+            onComplete:showMessage,
+            onCompleteParams:["2번이동끝"],
+            delay:3
+        })
+        function showMessage(msg){
+            console.log(msg)
+        }
+
+    </script>
+</body>
+</html>

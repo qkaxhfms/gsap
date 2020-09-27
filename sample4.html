@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP sample4</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{}
+        .wrap{position:relative;height:5vw;margin:1vw 0;border:1px solid red;}
+        .box{position:absolute;bottom:0;left:0;width:5vw;height:5vw;}
+        /* color */
+        .bgC1{background:red;}
+        .bgC2{background:blue;}
+        .bgC3{background:green;}
+        .bgC4{background:black;}
+        .bgC5{background:orange;}
+        .bgC6{background:purple;}
+        .bgC7{background:paleturquoise;}
+        .bgC8{background:lightgreen;}
+    </style>
+</head>
+<body>
+    <h1>Callback</h1>
+    <p>callback</p>
+    <div class="wrap"><div class="box box1 bgC1"></div></div>
+    <div class="wrap"><div class="box box2 bgC2"></div></div>
+    <div class="wrap"><div class="box box3 bgC3"></div></div>
+    <div class="wrap"><div class="box box4 bgC4"></div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script>
+        // callback을 사용할 수 있다.
+        gsap.to(".box1",{duration:2, x:100, ease:"bounce", onComplete :tweenComplete});
+        function tweenComplete (){console.log("트윈이 완료되었습니다.");}
+
+        // onComplete : 애니메이션이 완료될때
+        // onStart : 애니메이션이 시작될때
+        // onUpdate : 애니메이션이 업데이트 될 때마다
+        // onRepeat : 애니메이션이 반복될때마다
+        // onReverseComplete : 애니메이션이 반전되고 다시 시작될 때
+
+        // callback 매개변수
+        // 원하는 양의 매개변수를 선택적으로 전달할 수 있다.
+        gsap.to(".box2",{duration:2, x:150, ease:"steps(10)", onCompleteL :tweenComplete2, onCompleteParams:["done!"]});
+        function tweenComplete2(message){
+            console.log(message);
+        }
+
+    </script>
+</body>
+</html>
