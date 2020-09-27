@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP sample2</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{}
+        .wrap{position:relative;height:5vw;margin:1vw 0;border:1px solid red;}
+        .box{position:absolute;bottom:0;left:0;width:5vw;height:5vw;}
+        /* color */
+        .bgC1{background:red;}
+        .bgC2{background:blue;}
+        .bgC3{background:green;}
+        .bgC4{background:black;}
+        .bgC5{background:orange;}
+        .bgC6{background:purple;}
+        .bgC7{background:paleturquoise;}
+        .bgC8{background:lightgreen;}
+    </style>
+</head>
+<body>
+    <h1>Sample2</h1>
+    <p>from, to, fromTo, set</p>
+    <div class="wrap"><div class="box box1 bgC1"></div></div>
+    <div class="wrap"><div class="box box2 bgC2"></div></div>
+    <div class="wrap"><div class="box box3 bgC3"></div></div>
+    <div class="wrap"><div class="box box4 bgC4"></div></div>
+
+    <p>easing - bounce</p>
+    <div class="wrap"><div class="box box5 bgC1"></div></div>
+    <div class="wrap"><div class="box box6 bgC2"></div></div>
+    <div class="wrap"><div class="box box7 bgC3"></div></div>
+    <div class="wrap"><div class="box box8 bgC4"></div></div>
+
+    <p>easing - elastic</p>
+    <div class="wrap"><div class="box box9 bgC5"></div></div>
+    <div class="wrap"><div class="box box10 bgC6"></div></div>
+    <div class="wrap"><div class="box box11 bgC7"></div></div>
+    <div class="wrap"><div class="box box12 bgC8"></div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script>
+        // from : 도착지부터
+        // to : 출발지부터
+        // fromTo : 시작과 끝값 정의
+        // set : 지속시간 0 -> 바로실행
+        gsap.from(".box1",{duration:2, x:100});
+        gsap.to(".box2",{duration:2, x:100});
+        gsap.fromTo(".box3",{duration:2},{x:100});
+        gsap.set(".box4",{duration:2, x:100});
+
+        // easing
+
+        // bounce
+        gsap.to(".box5",{duration:2, x:100, ease:"bounce"});
+        gsap.to(".box6",{duration:2, x:100, ease:"bounce.out"});
+        gsap.to(".box7",{duration:2, x:100, ease:"bounce.in"});
+        gsap.to(".box8",{duration:2, x:100, ease:"bounce.inOut"});
+        // elastic
+        gsap.to(".box9",{duration:2, x:100, ease:"elastic"});
+        gsap.to(".box10",{duration:2, x:100, ease:"elastic.out"});
+        gsap.to(".box11",{duration:2, x:100, ease:"elastic.in"});
+        gsap.to(".box12",{duration:2, x:100, ease:"elastic.inOut"});
+
+    </script>
+</body>
+</html>
