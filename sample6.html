@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP sample6</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{}
+        .wrap{position:relative;height:5vw;margin:1vw 0;border:1px solid red;}
+        .box{position:absolute;bottom:0;left:0;width:5vw;height:5vw;}
+        /* color */
+        .bgC1{background:red;}
+        .bgC2{background:blue;}
+        .bgC3{background:green;}
+    </style>
+</head>
+<body>
+    <h1>Animation Control</h1>
+    <p>animation control</p>
+    <div class="wrap"><div class="box box1 bgC1"></div></div>
+    <div class="wrap"><div class="box box2 bgC2"></div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script>
+        // animation을 컨트롤할 수 있다
+        let tween = gsap.to(".box1",{duration:2,x:100});
+        // tween.pause(); 일시중지
+        // tween.resume(); 방향반전여부
+        // tween.reverse(); 처음으로 돌아감
+        // tween.seek(0.5); 0.5초 지점으로 이동
+        // tween.progress(0.25); 1/4 지점으로 이동
+        // tween.timeScale(0.5); 50퍼센트 이하 속도로 바꿈
+        // tween.timeScale(2); 2배 속도로 바꿈
+        // tween.kill(); 가비지컬렉션으로 이동
+
+
+    </script>
+</body>
+</html>

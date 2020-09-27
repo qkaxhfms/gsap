@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP sample9</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{}
+        .wrap{position:relative;height:5vw;margin:1vw 0;border:1px solid red;}
+        .box{position:absolute;bottom:0;left:0;width:5vw;height:5vw;}
+        /* color */
+        .bgC1{background:red;}
+        .bgC2{background:blue;}
+        .bgC3{background:green;}
+        .bgC4{background:black;}
+        .bgC5{background:orange;}
+        .bgC6{background:purple;}
+        .bgC7{background:paleturquoise;}
+        .bgC8{background:lightgreen;}
+    </style>
+</head>
+<body>
+    <h1>Animation Control</h1>
+    <p>getter setter</p>
+    <div class="wrap"><div class="box box1 bgC1"></div></div>
+    <div class="wrap"><div class="box box2 bgC2"></div></div>
+    <div class="wrap"><div class="box box3 bgC3"></div></div>
+    <div class="wrap"><div class="box box4 bgC3"></div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script>
+        let tween = gsap.to(".box1",{duration:1,x:100});
+        console.log(tween.duration(1));
+        tween.duration(2);//반복하지 않는 애니메이션의 지속 시간
+
+        let tl = gsap.timeline();
+        tl.to(".box2",{duration:1,x:200})
+          .to(".box3",{duration:1,x:200});
+        //   timeline에는 2초 길이의 시퀀스 트윈 2개가 필요합니다.
+
+        console.log(tl.duration(2));
+
+        let w = gsap.getProperty(".box1","width");
+        let bgColor = gsap.getProperty(".box1","bacckgroundColor");
+
+
+    </script>
+</body>
+</html>
