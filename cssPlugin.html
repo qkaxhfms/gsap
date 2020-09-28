@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css plugin 4</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{}
+        .wrap{position:relative;height:5vw;margin:1vw 0;border:1px solid red;}
+        .box{position:absolute;bottom:0;left:0;width:5vw;height:5vw;}
+        /* color */
+        .bgC1{background:red;}
+        .bgC2{background:blue;}
+        .bgC3{background:green;}
+        .bgC4{background:black;}
+        .bgC5{background:orange;}
+        .bgC6{background:purple;}
+        .bgC7{background:paleturquoise;}
+        .bgC8{background:lightgreen;}
+
+        .sample{
+            transform: translate3d(10px, 0px, -200px) rotateY(45deg) scale(1.5, 1.5);
+        }
+        .sample2{
+            ttransform:perspective(500px) translateY(50px) rotate(120deg);
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS PLUG-IN</h1>
+    <p>timeline 3</p>
+    <div class="wrap"><div class="box box1 bgC1"></div></div>
+    <div class="wrap"><div class="box box2 bgC2"></div></div>
+    <div class="wrap"><div class="box box3 bgC3"></div></div>
+    <div class="wrap box4-container"><div class="box box4 bgC4 sample"></div></div>
+    <div class="wrap box4-container"><div class="box box4 bgC5 sample2"></div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script>
+        //타임라인
+        gsap.to(".box1",{duration:2,rotation:30,scaleX:0.8});
+        // box1이 rotation:30번, scaleX 
+        gsap.to(".box2",{duration:2,rotation:"1.25rad",skewX:"30deg"});
+        gsap.to(".box3",{duration:2,rotationX:45,scaleX:0.8,Z:-300});
+
+        gsap.to(".sample",{
+            duration:2,
+            scale:1.5,
+            rotationY:45,
+            x:10,
+            y:0,
+            z:-200
+        });
+
+        gsap.set(".sample2",{
+            transformPerspective:500,
+            rotation:120,
+            y:50
+        })
+    </script>
+</body>
+</html>
