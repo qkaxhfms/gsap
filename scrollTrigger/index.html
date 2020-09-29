@@ -47,12 +47,21 @@
             <div class="con type1 h100">
                 scroll
             </div>
+
             <div class="con type2">
                 <div class="box box1 bgC1"></div>
                 <div class="box box2 bgC2"></div>
                 <div class="box box1 bgC3"></div>
                 <div class="box box2 bgC4"></div>
             </div>
+
+            <div class="con type3">
+                <div class="box box1 bgC1"></div>
+                <div class="box box2 bgC2"></div>
+                <div class="box box1 bgC3"></div>
+                <div class="box box2 bgC4"></div>
+            </div>
+
         </div>
     </div>
 
@@ -61,7 +70,7 @@
     <script>
 
         // gsap.registerPlugin(ScrollTrigger);
-        const anim = gsap.to(".box",{
+        const anim = gsap.to(".type2 .box",{
             duration:2,
             y:"5vw",
             opacity:1,
@@ -72,7 +81,11 @@
             trigger:".type2",
             animation:anim,
             markers:true,
+            toggleActions: "restart pause resume pause", //들어갈때, 떠날떄, 뒤로다시 들어갈떄, 처음부터 끝까지 스크롤 할때
+            
         });
+
+
     </script>
 </body>
 </html>
