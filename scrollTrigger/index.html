@@ -23,18 +23,35 @@
         .bgC8{background:lightgreen;}
 
         .h100{height:100vh;}
-        .con{
-            margin:5vw 0;
-            border:1px solid red;
+        .type2{
+            margin:30vw 0;
+            border-top:4px solid #000;
+            border-bottom:4px solid #000;
             display:flex;
             flex-wrap:nowrap;
             flex-direction:row;
             align-items:center;
             justify-content:center;
         }
-        .con .box{
+        .type2 .box{
             width:50vw;
             height:50vw;
+            opacity:0;
+        }
+
+        .type3{
+            border-top:4px solid red;
+            border-bottom:4px solid red;
+            margin:30vw 0;
+            display:flex;
+            flex-wrap:nowrap;
+            flex-direction:row;
+            align-items:center;
+            justify-content:center;
+        }
+        .type3 .box{
+            width:10vw;
+            height:10vw;
             opacity:0;
         }
     </style>
@@ -44,23 +61,30 @@
     <p>스크롤 모션 연습</p>
     <div class="wrap">
         <div class="container">
-            <div class="con type1 h100">
+
+            <!-- type1 (s) -->
+            <section class="con type1 h100">
                 scroll
-            </div>
+            </section>
+            <!-- type1 (e) -->
 
-            <div class="con type2">
+            <!-- type2 (s) -->
+            <section class="con type2">
                 <div class="box box1 bgC1"></div>
                 <div class="box box2 bgC2"></div>
                 <div class="box box1 bgC3"></div>
                 <div class="box box2 bgC4"></div>
-            </div>
+            </section>
+            <!-- type2 (e) -->
 
-            <div class="con type3">
+            <!-- type3 (s) -->
+            <section class="con type3">
                 <div class="box box1 bgC1"></div>
                 <div class="box box2 bgC2"></div>
                 <div class="box box1 bgC3"></div>
                 <div class="box box2 bgC4"></div>
-            </div>
+            </section>
+            <!-- type3 (e) -->
 
         </div>
     </div>
@@ -69,9 +93,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
     <script>
 
-        // gsap.registerPlugin(ScrollTrigger);
-        const anim = gsap.to(".type2 .box",{
-            duration:2,
+        const parallexDown = gsap.to(".type2 .box",{
+            duration:1,
             y:"5vw",
             opacity:1,
             stagger:0.2
@@ -79,12 +102,46 @@
 
         ScrollTrigger.create({
             trigger:".type2",
-            animation:anim,
+            animation:parallexDown,
             markers:true,
-            toggleActions: "restart pause resume pause", //들어갈때, 떠날떄, 뒤로다시 들어갈떄, 처음부터 끝까지 스크롤 할때
-            
+            toggleActions: "restart pause resume pause",
+            // 들어갈때, 떠날떄, 뒤로다시 들어갈떄, 처음부터 끝까지 스크롤 할때            
         });
 
+        const rotateBox = gsap.to(".type3 .box", {
+            duration:1,
+            x:"5vw",
+            opacity:1,
+            stagger:0.2
+        })
+
+        ScrollTrigger.create({
+            trigger:".type3",
+            animation:rotateBox,
+            markers:true,
+            toggleActions: "restart pause resume pause",
+        })
+        // const sections = document.querySelectorAll("section");
+        // let boxs =[];
+        // boxs.push(sections);
+
+        // boxs.forEach((val,idx)=>{
+        //    console.log(val);
+        //    console.log(idx);
+        // });
+
+        // console.log(boxs);
+
+
+        // ScrollTrigger.create({
+        //     start:"top 0%",
+        //     end:"bottom 0%",
+        //     markers:true,
+        //     trigger:".con"
+        // })
+
+    </script>
+    <script>
 
     </script>
 </body>
