@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>scroll trigger 2</title>
+    <title>scroll trigger 4</title>
     <style>
         *{
             margin:0;
@@ -39,21 +39,6 @@
             opacity:0;
         }
 
-        .type3{
-            border-top:4px solid red;
-            border-bottom:4px solid red;
-            margin:30vw 0;
-            display:flex;
-            flex-wrap:nowrap;
-            flex-direction:row;
-            align-items:center;
-            justify-content:center;
-        }
-        .type3 .box{
-            width:10vw;
-            height:10vw;
-            opacity:0;
-        }
     </style>
 </head>
 <body>
@@ -69,7 +54,7 @@
             <!-- type1 (e) -->
 
             <!-- type2 (s) -->
-            <section class="con type2">
+            <section class="con type2 h100">
                 <div class="box box1 bgC1"></div>
                 <div class="box box2 bgC2"></div>
                 <div class="box box1 bgC3"></div>
@@ -78,7 +63,7 @@
             <!-- type2 (e) -->
 
             <!-- type3 (s) -->
-            <section class="con type3">
+            <section class="con type2 h100">
                 <div class="box box1 bgC1"></div>
                 <div class="box box2 bgC2"></div>
                 <div class="box box1 bgC3"></div>
@@ -93,34 +78,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
     <script>
 
-        const parallexDown = gsap.to(".type2 .box",{
-            duration:1,
+    // 다중제어
+
+    const boxes = gsap.utils.toArray(".box");
+    console.log(boxes);
+    boxes.forEach(box => {
+        gsap.to(box,{
+            opacity:1,
             y:"5vw",
-            opacity:1,
-            stagger:0.2
-        });
+            stagger:0.2,
 
-        ScrollTrigger.create({
-            trigger:".type2",
-            animation:parallexDown,
-            markers:true,
-            toggleActions: "restart pause resume pause",
-            // 들어갈때, 떠날떄, 뒤로다시 들어갈떄, 처음부터 끝까지 스크롤 할때            
-        });
-
-        const rotateBox = gsap.to(".type3 .box", {
-            duration:1,
-            x:"5vw",
-            opacity:1,
-            stagger:0.2
+            scrollTrigger:{
+                trigger:box,
+                scrub:true,
+                markers:true,
+                toggleActions: "restart pause resume pause",
+            }
         })
-
-        ScrollTrigger.create({
-            trigger:".type3",
-            animation:rotateBox,
-            markers:true,
-            toggleActions: "restart pause resume pause",
-        })
+    })
 
     </script>
     <script>

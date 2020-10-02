@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>scroll trigger 2</title>
+    <title>scroll trigger 3</title>
     <style>
         *{
             margin:0;
@@ -69,7 +69,7 @@
             <!-- type1 (e) -->
 
             <!-- type2 (s) -->
-            <section class="con type2">
+            <section class="con type2 type2-1">
                 <div class="box box1 bgC1"></div>
                 <div class="box box2 bgC2"></div>
                 <div class="box box1 bgC3"></div>
@@ -78,7 +78,7 @@
             <!-- type2 (e) -->
 
             <!-- type3 (s) -->
-            <section class="con type3">
+            <section class="con type2 type2-2">
                 <div class="box box1 bgC1"></div>
                 <div class="box box2 bgC2"></div>
                 <div class="box box1 bgC3"></div>
@@ -93,34 +93,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
     <script>
 
-        const parallexDown = gsap.to(".type2 .box",{
-            duration:1,
-            y:"5vw",
-            opacity:1,
-            stagger:0.2
-        });
+    // 다중제어
 
+    let tl = gsap.timeline();
+
+    const parallexDown = tl.to(".type2-1 .box",{duration:1,y:"5vw",opacity:1,stagger:0.2})
+                           .to(".type2-2 .box"),{duration:1,y:"5vw",opacity:1,stagger:0.2});
+
+    gsap.utils.toArray(".con").forEach((pannel, i) => {
         ScrollTrigger.create({
-            trigger:".type2",
+            trigger:pannel,
+            markers:true,
             animation:parallexDown,
-            markers:true,
-            toggleActions: "restart pause resume pause",
-            // 들어갈때, 떠날떄, 뒤로다시 들어갈떄, 처음부터 끝까지 스크롤 할때            
-        });
-
-        const rotateBox = gsap.to(".type3 .box", {
-            duration:1,
-            x:"5vw",
-            opacity:1,
-            stagger:0.2
+            toggleClass:"active"
         })
+    });
 
-        ScrollTrigger.create({
-            trigger:".type3",
-            animation:rotateBox,
-            markers:true,
-            toggleActions: "restart pause resume pause",
-        })
 
     </script>
     <script>
