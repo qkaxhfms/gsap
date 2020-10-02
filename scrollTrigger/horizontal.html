@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll trigger</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{}
+
+        /* color */
+        .bgC1{background:red;}
+        .bgC2{background:blue;}
+        .bgC3{background:green;}
+        .bgC4{background:black;}
+        .bgC5{background:orange;}
+        .bgC6{background:purple;}
+        .bgC7{background:paleturquoise;}
+        .bgC8{background:lightgreen;}
+
+        .h100{height:100vh;}
+        .container{
+            float:left;
+            display:flex;
+            flex-wrap:nowrap;
+            flex-direction:row;
+            /* align-items:stretch;
+            justify-content:stretch; */
+        }
+        .container>section{
+            color:#fff;
+            height:100vh;
+        }
+        .type1{background:#000;width:1000px;}
+        .type2{background:#111;width:2000px;}
+        .type3{background:#222;width:3000px;}
+        .type2 .box{
+            /* width:50vw;
+            height:50vw; */
+            /* opacity:0; */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>SCROLL TRIGGER</h1>
+    <p>스크롤 모션 연습</p>
+    <div class="wrap">
+        <div class="container">
+
+            <!-- type1 (s) -->
+            <section class="con type1">
+                <div class="inner">1</div>
+            </section>
+            <!-- type1 (e) -->
+
+            <!-- type2 (s) -->
+            <section class="con type2">
+                <div class="inner">2</div>
+            </section>
+            <!-- type2 (e) -->
+
+            <!-- type3 (s) -->
+            <section class="con type3">
+                <div class="inner">3</div>
+            </section>
+            <!-- type3 (e) -->
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
+    <script>
+        let sections = gsap.utils.toArray(".con");
+        console.log(sections);
+        gsap.to(sections,{
+            xPercent:-100*(sections.length -1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".container",
+                pin: true,
+                scrub: 1,
+                // snap: 1 / (sections.length - 1),
+                // // base vertical scrolling on how wide the container is so it feels more natural.
+                end: () => "+=" + document.querySelector(".container").offsetWidth
+            }
+        })
+    </script>
+</body>
+</html>
