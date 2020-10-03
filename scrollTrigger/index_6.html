@@ -9,56 +9,160 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{}
 
-        section{border-top:1px solid black;}
-        h2{margin-bottom:100vh;}
-        .box {
-            background-color: green;
-            width: 100px;
-            height: 100px;
-            margin-bottom:100vh;
+        section{
+            border-top:1px solid black;
+            border-bottom:1px solid black;
+            padding:0 5vw;
         }
+        .sectionB{
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:space-around;
+        }
+        .txt{
+            font-size:1.5rem;
+            margin:5vh 0;
+            text-align:center;
+            border-top:1px solid black;
+            border-bottom:1px solid black;
+        }
+
+        .inner{
+            display:flex;
+            height:80vh;
+            background:#ccc;
+            flex-direction:row;
+            align-items:center;
+            justify-content:space-around;
+        }
+
+        .box {
+            border-style:solid;
+            border-width:1px;
+            width: 15vw;
+            height: 15vw;
+        }
+
+        .bgC1{border-color:red;}
+        .bgC2{border-color:blue;}
+        .bgC3{border-color:green;}
+        .bgC4{border-color:black;}
+        .bgC5{border-color:orange;}
+        .bgC6{border-color:purple;}
+        .bgC7{border-color:paleturquoise;}
+        .bgC8{border-color:lightgreen;}
 
 </style>
 </head>
 <body>
 
-    <h2>Scroll down</h2>
-    <div class="box"></div>
-    
-    <div class="box"></div>
-    
-    <div class="box"></div>
+    <!-- <h2>Scroll down</h2> -->
+    <section class="sectionB">
+        <h2>Scroll</h2>
+    </section>
+
+    <section class="sectionP">
+        <article>
+            <h2 class="txt">Lorem ipsum</h2>
+            <div class="inner">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </article>
+    </section>
+
+    <section class="sectionP">
+        <article>
+            <h2 class="txt">Lorem ipsum</h2>
+            <div class="inner">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </article>
+    </section>
+
+    <section class="sectionP">
+        <article>
+            <h2 class="txt">Lorem ipsum</h2>
+            <div class="inner">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </article>
+    </section>
+
+    <section class="sectionP">
+        <article>
+            <h2 class="txt">Lorem ipsum</h2>
+            <div class="inner">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </article>
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
     <script>
 
     // 다중제어
-    const boxes = gsap.utils.toArray('.box');
-        boxes.forEach(box => {
-        const anim = gsap.to(box, { x: 300, paused: true });
+    const txtAnimation = gsap.utils.toArray('.txt');
+    txtAnimation.forEach(txt => {
+        const anim = gsap.from(txt, {
+            duration:1,
+            y:"5vw",
+            opacity:0,
+            paused: true
+        });
         
         ScrollTrigger.create({
-            trigger:box,
+            trigger:txt,
             markers:true,
         })
 
         ScrollTrigger.create({
-            trigger: box,
-            start: "center 70%",
+            trigger: txt,
+            // start: "center 70%",
             onEnter: () => anim.play()
         });
         
         ScrollTrigger.create({
-            trigger: box,
-            start: "top bottom",
+            trigger: txt,
+            // start: "top bottom",
             onLeaveBack: () => anim.pause(0)
         });
     });
 
+    // section-parrellex-animation
+    const sectionParrallexanim = gsap.from(".box", {
+        duration:2,
+        y:"10vw",
+        opacity:1,
+        stagger:0.5,
+        paused:true
+    })
+
+    ScrollTrigger.create({
+        trigger:".inner",
+        animation:sectionParrallexanim,
+        markers:true,
+        toggleActions: "restart pause resume pause",     
+    });
+
+    // const innerAnimation = gsap.utils.toArray('.box');
+    // innerAnimation.forEach(box => {
 
 
-
+    // })
 
 
     </script>
