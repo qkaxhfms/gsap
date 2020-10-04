@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,7 @@
     </header>
     <!-- header (e) -->
 
+    <!-- main (s) -->
     <main id="main">
         <!-- section-visual (s)-->
         <section class="section-visual">
@@ -42,7 +43,7 @@
         </section>
         <!-- section-visual (e)-->
 
-        <!-- section-visual (s)-->
+        <!-- section-discussion (s)-->
         <section class="section-discussion">
             <div class="inner">
                 <div class="box">1</div>
@@ -50,29 +51,31 @@
                 <div class="box">3</div>
             </div>
         </section>
-        <!-- section-visual (e)-->
+        <!-- section-discussion (e)-->
+
     </main>
+    <!-- main (e) -->
 
     <footer id="footer">
         footer
     </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
     <script>
-        // visual
+        // sectionVisual
         ScrollTrigger.create({
             trigger:".section-visual .inner",
             start:"top 0%",
             end:"+=80vh",
             markers:true,
             pin:true,
-            pinSpacing:false
+            pinSpacing:false,
         })
 
-        // main
-        const txts = gsap.utils.toArray(".txtWrap");
-        txts.forEach(txt => {
-            console.log(txt);
+        // sectionIntro
+        const sectionIntro = gsap.utils.toArray(".txtWrap");
+        sectionIntro.forEach(txt => {
             const anim = gsap.to(txt,{
                 duration:2,
                 opacity:1,
@@ -98,6 +101,20 @@
 
         })
 
+        // discussion
+        gsap.to(".section-discussion .box", {
+            duration:2,
+            opacity:1,
+            pause:true,
+            y:"5vw",
+            stagger:0.5,
+            scrollTrigger:{
+                trigger:".section-discussion .box",
+                markers:true,
+            }
+        })
+
     </script>
+
 </body>
 </html>
