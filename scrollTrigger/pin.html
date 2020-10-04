@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        .container{
+            border-width:1px;
+            border-style:solid;
+            border-top-color:blue;
+            border-bottom-color:black;
+            height:200px;
+        }
+        .boxContainer{
+            padding:300px 0;
+        }
+        .box{
+            width:200px;
+            height:200px;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="container">
+            <!-- 박스 -->
+            <div class="boxContainer">
+                <div class="box"></div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+        <div class="container">
+            <!-- 박스 -->
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
+    <script>
+        ScrollTrigger.create({
+            trigger:".boxContainer",
+            start:"top 0%",
+            end:"+=300",
+            markers:true,
+            pin:true,
+            pinSpacing:false
+        })
+    </script>
+</body>
+</html>
