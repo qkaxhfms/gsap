@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>effect</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{}
+
+        /* color */
+        .bgC1{background:red;}
+        .bgC2{background:blue;}
+        .bgC3{background:green;}
+        .bgC4{background:black;}
+        .bgC5{background:orange;}
+        .bgC6{background:purple;}
+        .bgC7{background:paleturquoise;}
+        .bgC8{background:lightgreen;}
+
+        .con{
+            margin:5vw 0;
+        }
+        .box{
+            width:400px;
+            height:400px;
+            /* opacity:0; */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>GSAP</h1>
+    <div class="wrap">
+        <div class="container">
+
+            <h2>위치 매개변수로 제어</h2>
+
+            <section class="con">
+                <div class="box box1 bgC2"></div>
+            </section>
+
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
+    <script>
+        // effect
+        gsap.effects.explode(".box1",{
+            direction:"up",
+            duration:3
+        })
+    </script>
+</body>
+</html>
