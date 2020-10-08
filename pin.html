@@ -36,6 +36,9 @@
         .con3{
             background:#333;
         }
+        .con4{
+            background:#444;
+        }
         section{
             height:100vh;
             display:flex;
@@ -64,6 +67,11 @@
         SCROLL DOWN
     </section>
     <section class="con con2">
+        <div class="box box0 bgC1">
+            <span>PIN</span>
+        </div>
+    </section>
+    <section class="con con3">
         <div class="box box1 bgC0">
             <span>BIG</span>
         </div>
@@ -71,8 +79,8 @@
             <span>SMALL</span>
         </div>
     </section>
-    <section class="con con1">
-        3
+    <section class="con con4">
+        4
     </section>
 
 
@@ -81,9 +89,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
     <script>
         // pin
+        ScrollTrigger.create({
+            trigger:".box0",
+            // scroller:".con2",
+            start:"0% 50%",
+            end:"100% 20%",
+            pin:true,
+            // pinSpacing:false,
+            // scrub:1,
+            id:"pin-box",
+            indent:80,
+            markers:{
+                startColor:"green",
+                endColor:"yellow"
+            },
+        })
+
         const boxTl = gsap.timeline({
             scrollTrigger:{
-                trigger:".con2",
+                trigger:".con3",
                 start:"50% 70%",
                 end:"70% 50%",
                 scrub:0.5,
