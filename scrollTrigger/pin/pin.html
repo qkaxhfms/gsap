@@ -27,18 +27,13 @@
         .bgC7{background:paleturquoise;}
         .bgC8{background:lightgreen;}
 
-        .con1{
-            background:#111;
-        }
-        .con2{
-            background:#222;
-        }
-        .con3{
-            background:#333;
-        }
-        .con4{
-            background:#444;
-        }
+        .con1{background:#111;}
+        .con2{background:#222;}
+        .con3{background:#333;}
+        .con4{background:#444;}
+        .con5{background:#555;}
+        .con6{background:#666;}
+
         section{
             height:100vh;
             display:flex;
@@ -76,8 +71,14 @@
             <span>SMALL</span>
         </div>
     </section>
-    <section class="con con4">
+    <section class="con con4 pinCon">
         4
+    </section>
+    <section class="con con5 pinCon">
+        5
+    </section>
+    <section class="con con6 pinCon">
+        6
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
@@ -92,12 +93,12 @@
             pin:true,
             // pinSpacing:false,
             // scrub:1,
-            id:"pin-box",
-            indent:80,
-            markers:{
-                startColor:"green",
-                endColor:"yellow"
-            },
+            // id:"pin-box",
+            // indent:80,
+            // markers:{
+            //     startColor:"green",
+            //     endColor:"yellow"
+            // },
         })
 
         const boxTl = gsap.timeline({
@@ -106,15 +107,30 @@
                 start:"50% 70%",
                 end:"70% 50%",
                 scrub:0.5,
-                id:"box",
-                markers:{
-                    startColor:"white",
-                    endColor:"yellow"
-                },
+                // id:"box",
+                // markers:{
+                //     startColor:"white",
+                //     endColor:"yellow"
+                // },
             }
         });
         boxTl.to(".box2",{scaleX:0.5,scaleY:0.5})
         boxTl.to(".box1",{scaleX:1.5,scaleY:1.5})
+
+        let pinCon = gsap.timeline({
+            scrollTrigger:{
+                // trigger:".con4",
+                id:"pin",
+                pin:".con4",
+                // pinSpacing:false,
+                start:"top top",
+                end:"+=2500",
+                markers:{
+                    startColor:"Red",
+                    endColor:"blue"
+                }
+            }
+        })
 
     </script>
 </body>
