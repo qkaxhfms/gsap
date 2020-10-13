@@ -12,15 +12,20 @@
         }
         body{}
         .wrap{
-            margin:2vw 0;
             display:flex;
             flex-direction:column;
             align-items:center;
             justify-content:center;
+            margin:100vh 0;
             }
         .boxWrap{
             border:1px solid red;
             margin:3.5vw;
+            overflow:hidden;
+        }
+        .boxWrap1{
+            perspective:300px;
+            transform-style:preserve-3d;
         }
         .box{
             width:15vw;
@@ -45,39 +50,21 @@
         <!-- scrollProxy (s) -->
         <div class="scrollProxy">
 
-            <article class="boxWrap">
+            <article class="boxWrap boxWrap1">
                 <div class="box box1 bgC1">
                     1
                 </div>
             </article>
 
-            <article class="boxWrap">
+            <article class="boxWrap boxWrap2">
                 <div class="box box2 bgC2">
                     2
                 </div>
             </article>
 
-            <article class="boxWrap">
+            <article class="boxWrap boxWrap3">
                 <div class="box box3 bgC3">
                     3
-                </div>
-            </article>
-
-            <article class="boxWrap">
-                <div class="box box4 bgC2">
-                    4
-                </div>
-            </article>
-
-            <article class="boxWrap">
-                <div class="box box5 bgC1">
-                    5
-                </div>
-            </article>
-
-            <article class="boxWrap">
-                <div class="box box6 bgC2">
-                    6
                 </div>
             </article>
 
@@ -87,19 +74,55 @@
     <!-- wrap (e) -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
     <script>
-        Scrolltrigger.create({
-            scroller:".scrollProxy",
-            trigger:".box1",
-            start:"top bottom",
-            markers:{
-                startColor:"blue",
-                endColor:"red",
-            },
-            onToggle:(self) => {
-                console.log(self.isActive);
+
+        gsap.from(".box1",{
+            y:100,
+            scrollTrigger:{
+            // scroller:".scrollProxy",
+                trigger:".boxWrap1",
+                start:"top center",
+                end:"bottom top",
+                // markers:{
+                //     startColor:"blue",
+                //     endColor:"green",
+                // },
+
             }
         })
+
+        gsap.from(".box2",{
+            rotateY:100,
+            scrollTrigger:{
+            // scroller:".scrollProxy",
+                trigger:".boxWrap2",
+                start:"top center",
+                end:"bottom top",
+                // markers:{
+                //     startColor:"blue",
+                //     endColor:"green",
+                // },
+
+            }
+        })
+
+        gsap.to(".box3",{
+            scaleX:2,
+            scrollTrigger:{
+            // scroller:".scrollProxy",
+                trigger:".boxWrap3",
+                start:"top center",
+                end:"bottom top",
+                scrub:1,
+                // markers:{
+                //     startColor:"blue",
+                //     endColor:"green",
+                // },
+
+            }
+        })
+
     </script>
 </body>
 </html>
