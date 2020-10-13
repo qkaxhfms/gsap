@@ -88,21 +88,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
     <script>
         // pin
-        ScrollTrigger.create({
-            trigger:".box0",
-            // scroller:".con2",
-            start:"0% 50%",
-            end:"100% 20%",
-            pin:true,
-            // pinSpacing:false,
-            // scrub:1,
-            // id:"pin-box",
-            // indent:80,
-            // markers:{
-            //     startColor:"green",
-            //     endColor:"yellow"
-            // },
+        gsap.to(".con2",{
+            scrollTrigger:{
+                trigger:".box0",
+                start:"0% 50%",
+                end:"100% 20%",
+                // pin:true,
+                // pinSpacing:false,
+                // scrub:1,
+                id:"pin-box",
+                // indent:80,
+                toggleClass:"active",
+                markers:{
+                    startColor:"green",
+                    endColor:"yellow"
+                },
+                toggleActions: "play none none none"
+            },
+            background:"#fff",
+            color:"white"
         })
+
+
+        // anim1.to(".box0",{})
+        
+
 
         const boxTl = gsap.timeline({
             scrollTrigger:{
@@ -121,8 +131,6 @@
         boxTl.to(".box1",{scaleX:1.5,scaleY:1.5})
 
         gsap.utils.toArray(".pinCon").forEach((panel, idx) => {
-            console.log(panel);
-            console.log(idx);
             ScrollTrigger.create({
                 trigger: panel,
                 start: "top top", 

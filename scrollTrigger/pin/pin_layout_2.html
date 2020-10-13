@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고정영역 레이아웃</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            background:#000;
+            color:#fff;
+            font-size:5em;
+        }
+
+        /* horizontal */
+        .hor1{height:100vh;background:#111;}
+        .hor2{height:100vh;background:#222;}
+        .hor3{height:100vh;background:#333;}
+        .hor4{height:100vh;background:#444;}
+        .hor5{height:125vh;background:#555;}
+        .hor6{height:100vh;background:#666;}
+        .hor7{height:50vh;background:#777;}
+        .hor8{height:50vh;background:#888;}
+        [class*="hor"]{
+            display:flex;
+            flex-direction:row;
+            align-items:center;
+            justify-content:space-around;
+        }
+
+        .nor1{
+            height:100vh;
+            width:100vw;
+            line-height:100vh;
+            text-align:center;
+            background:#fff;
+            color:#000;
+        }
+        /* Parallax */
+        .pinVertical::after{
+            display:block;
+            content:"";
+            clear:both;
+        }
+        .pinVertical{
+            display:flex;
+            flex-wrap:nowrap;
+            float:left;
+            flex-direction:row;
+            align-items:center;
+            justify-content:space-around;
+        }
+        [class*="par"]{
+            height:100vh;
+        }
+        .par1{background:#111;width:100vw;}
+        .par2{background:#222;width:100vw;}
+        .par3{background:#333;width:100vw;}
+
+    </style>
+</head>
+<body>
+    <section class="hor1 pinHorizontal">
+        "PIN" SCROLL DOWN
+    </section>
+    <section class="hor2 pinHorizontal">
+        2 / 100VH
+    </section>
+    <section class="hor3 pinHorizontal">
+        3 / 100VH
+    </section>
+    <section class="hor4 pinHorizontal">
+        4 / 125VH
+    </section>
+    <section class="hor5 pinHorizontal">
+        5 / 100VH
+    </section>
+    <section class="hor6 pinHorizontal">
+        6 / 50VH
+    </section>
+    <section class="nor1">
+        NOW CHANGE TO VERTICAL
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>	
+    <script>
+        const conHor = gsap.utils.toArray(".pinHorizontal");
+        conHor.forEach((con, idx) => {
+            // gsap scrolltrigger
+            gsap.to(con,{
+                scrollTrigger:{
+                    trigger:con,
+                    start:"0% 0%",
+                    end:"100% 0%",
+                    markers:true,
+                    pin:true,
+                    pinSpacing:false,
+                }
+            })
+
+        })
+    </script>
+</body>
+</html>
