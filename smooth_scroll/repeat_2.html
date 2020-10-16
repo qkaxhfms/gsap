@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repeat 1</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            padding:0 2vw;
+        }
+        #wrap{
+            text-align: center;
+        }
+        .sampleWrap{
+            display:flex;
+            flex-direction:row;
+            align-items:flex-start;
+        }
+        .sample{}
+        .scrollerDefault{
+            overflow-y:scroll;
+            border:5px solid #000;
+        }
+        .scroller{
+            border:5px solid red;
+        }
+        .imgWrap{
+            height:50vh;
+        }
+        .img,
+        img{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- wrap (s) -->
+    <div id="wrap">
+        <h1>smooth scroller</h1>
+        <p>이미지는 샘플이며 480x20000픽셀이지만<br> img속성을 제어하여 100%로 변경 해 놓았습니다.</p>
+        <div class="sampleWrap">
+            <!-- sample (s) -->
+            <div class="sample">
+                <h2>Scroller</h2>
+                <div class="scroller imgWrap">
+                    <span class="img">
+                        <img src="https://via.placeholder.com/480x20000" alt="480x20000">
+                    </span>
+                </div>
+            </div>
+            <!-- sample (e) -->
+            <!-- sample (s) -->
+            <div class="sample">
+                <h2>Default</h2>
+                <div class="scrollerDefault imgWrap">
+                    <span class="img">
+                        <img src="https://via.placeholder.com/480x20000" alt="480x20000">
+                    </span>
+                </div>
+            </div>
+            <!-- sample (e) -->
+        </div>
+    </div>
+    <!-- wrap (e) -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script src="smooth-scrollbar.js"></script>
+    <script>
+        let Scrollbar = window.Scrollbar;
+        Scrollbar.init(document.querySelector(".scroller"),{
+            damping:0.1,
+        })
+
+
+    </script>
+</body>
+</html>
