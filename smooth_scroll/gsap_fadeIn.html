@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fade in</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{}
+        p {
+        max-width: 1000px;
+        }
+
+        h1 {
+        display: inline-block;
+        }
+
+        .content {
+        width: 100%;
+        height: 100vh;
+        padding: 20px;
+        position: relative;
+        }
+
+        .content1 {
+            margin-top:80vh;
+        background: slategray;
+        }
+        .content2 {
+        background: forestgreen;
+        }
+        .content3 {
+        background: midnightblue;
+        }
+        .content4 {
+        background: indigo;
+        }
+        .content5 {
+        background: goldenrod;
+        }
+        .content6 {
+        background: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- wrap (s) -->
+    <div class="wrap">
+        <!-- scrollProxy (s) -->
+        <div class="content content1">
+            <h1>Section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quaerat vel eos tempore labore. Veniam, earum atque, aliquid neque harum animi minima quasi est vitae quod debitis aliquam expedita repellendus consequatur minus ipsam explicabo fugit qui aut corrupti placeat amet alias. Iusto animi aliquam fuga perferendis nobis in vel vitae?<p>
+        </div>
+        <div class="content content2">
+            <h1>Section 2</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quaerat vel eos tempore labore. Veniam, earum atque, aliquid neque harum animi minima quasi est vitae quod debitis aliquam expedita repellendus consequatur minus ipsam explicabo fugit qui aut corrupti placeat amet alias. Iusto animi aliquam fuga perferendis nobis in vel vitae?<p>
+        </div>
+        <div class="content content3">
+            <h1>Section 3</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quaerat vel eos tempore labore. Veniam, earum atque, aliquid neque harum animi minima quasi est vitae quod debitis aliquam expedita repellendus consequatur minus ipsam explicabo fugit qui aut corrupti placeat amet alias. Iusto animi aliquam fuga perferendis nobis in vel vitae?<p>
+        </div>
+        <div class="content content4">
+            <h1>Section 4</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quaerat vel eos tempore labore. Veniam, earum atque, aliquid neque harum animi minima quasi est vitae quod debitis aliquam expedita repellendus consequatur minus ipsam explicabo fugit qui aut corrupti placeat amet alias. Iusto animi aliquam fuga perferendis nobis in vel vitae?<p>
+        </div>
+        <!-- scrollProxy (e) -->
+    </div>
+    <!-- wrap (e) -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script src="smooth-scrollbar.js"></script>
+    <script>
+        const arrContent = gsap.utils.toArray(".content");
+        console.log(arrContent);
+        arrContent.forEach(section => {
+            gsap.from(section,{
+                scaleX:1.2,
+                scaleY:1.2,
+                scrollTrigger:{
+                    trigger:section,
+                    start:"0% 70%",
+                    end:"20% 50%",
+                    markers:{
+                        startColor:"green",
+                        endColor:"yellow",
+                        scrub:true,
+                    }
+                }
+            })
+        })
+
+
+    </script>
+</body>
+</html>
