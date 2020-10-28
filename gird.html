@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        ul,li{
+            list-style:none;
+        }
+        .section{
+            width:1540px;
+            margin:50vh auto;
+            padding:0 20px;
+        }
+        .section__visual{
+        }
+        .section__title{
+            font-size:8rem;
+        }
+
+        /* section__list */
+        .section__list{
+            display:flex;
+            align-items:stretch;
+            justify-content:space-between;
+            background:#ccc;
+        }
+        .section__list li{
+            /* flex-basis:25%; */
+            width:25%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            box-sizing:border-box;
+        }
+        .section__list li.width__50{
+            /* flex-basis:50%; */
+            width:50%;
+        }
+        .section__list li span{
+            display:inline-block;
+            height:auto;
+            font-size:3rem;
+            border:none;
+        }
+
+        [class*="section__list--item"]{
+            border:1px solid black;
+            height:450px;
+        }
+
+        .section__list--item:nth-child(1){
+            transform:translateY(25vh);
+            border-color:red;
+        }
+        .section__list--item:nth-child(2){
+            border-color:blue;
+        }
+        .section__list--item:nth-child(3){
+            transform:translateY(25vh);
+            border-color:green;
+        }
+        .section__list--item:nth-child(4){
+            border-color:purple;
+        }
+
+        @media screen and (max-width:1540px){
+
+            /* section__visual */
+            .section{
+                width:auto;
+            }
+
+        }
+
+        @media screen and (max-width:768px){
+
+            /* section__visual */
+            .section{
+            }
+
+            .section{
+                flex-wrap:wrap;
+            }
+            .section__list{
+                flex-wrap:wrap;
+            }
+            .section__list li{
+                width:50%;
+            }
+
+
+
+            .section.section__intro{
+                margin:0 auto;
+            }
+            .section__intro .section__list li.width__50{
+                width:100%;
+            }
+
+            .section__intro .section__list{
+                flex-direction:column-reverse;
+            }
+            .section__intro .section__list li{
+            }
+            .section__intro .section__list--item {
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- section__visual (s) -->
+    <section class="section section__visual">
+        <h1 class="section__title">지그재그</h1>
+        <ul class="section__list">
+            <li class="section__list--item">
+                <span class="section__list--item-num">1</span>
+            </li>
+            <li class="section__list--item">
+                <span class="section__list--item-num">2</span>
+            </li>
+            <li class="section__list--item">
+                <span class="section__list--item-num">3</span>
+            </li>
+            <li class="section__list--item">
+                <span class="section__list--item-num">4</span>
+            </li>
+        </ul>
+    </section>
+    <!-- section__visual (e) -->
+
+    <!-- section__intro (s) -->
+    <section class="section section__intro">
+        <ul class="section__list">
+            <li class="section__list--item width__50">
+                <h2>제목제목제목제목</h2>
+                <div class="description">내용내용내용내용</div>
+            </li>
+            
+            <li class="section__list--item">
+                <span class="section__list--item-num">5</span>
+            </li>
+            <li class="section__list--item">
+                <span class="section__list--item-num">6</span>
+            </li>
+        </ul>
+    </section>
+    <!-- section__intro (e) -->
+
+</body>
+</html>

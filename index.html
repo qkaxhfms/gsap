@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .section{
+            height:100vh;
+        }
+        .section:nth-child(1){background-color:#ccc;}
+        .section:nth-child(2){background-color:#aaa;}
+        .section:nth-child(3){background-color:#bbb;}
+        .box{
+            width:100px;
+            height:200px;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        1
+    </section>
+    <section class="section">
+        <div class="boxWrap">
+            <div class="box">
+                box
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        3
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script src="ui_trigger.js"></script>
+    <script>
+
+        ScrollTrigger.create({
+            markers:true,
+            trigger:".boxWrap",
+            start:"0% 66%",
+            end:"100% 33%",
+
+            onEnter:() => {
+                console.log("onEnter")
+                tlBox1();
+            },
+            onLeave:() => {
+                console.log("onLeave")
+                tlBox2();
+            },
+            onEnterBack:() => {
+                console.log("onEnterBack")
+                tlBox3();
+            },
+            onLeaveBack:() => {
+                console.log("onLeaveBack")
+                tlBox4();
+            },
+        })
+
+        // timeline
+        let tl = gsap.timeline();
+
+        function tlBox1(){
+            tl.from(".box",{
+                opacity:0,
+            })
+        }
+        function tlBox2(){
+            tl.to(".box",{
+                x:10,
+            })
+        }
+        function tlBox3(){
+            tl.to(".box",{
+                y:10,
+            })
+        }
+        function tlBox4(){
+            tl.to(".box",{
+                color:"red",
+            })
+        }
+    </script>
+
+</body>
+</html>

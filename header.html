@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="_style.scss">
+    <style>
+        /* reset */
+        *{margin:0;padding:0;box-sizing:border-box;outline:none;}
+        ul,li{list-style:none;}
+        a{text-decoration:none;color:#fff;}
+
+        /* custom */
+        .blind{
+            position: absolute;
+            font-size:0;
+            opacity:0;
+            height:0;
+            width:0;
+            color:transparent;
+        }
+        .dimmed{
+            z-index:50;
+            position: absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            top:0;
+            opacity:0;
+            background-color:rgba(0,0,0,0.8);
+        }
+
+        /* header */
+        .header{
+            z-index:100;
+            position: fixed;
+            width:100%;
+            height:60px;
+            padding:0 20px;
+            left:0;
+            top:0;
+            background:#000;
+            display: flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        /* header__logo */
+        .header__logo{
+            /* border:1px solid red; */
+            font-size:20px;
+        }
+
+        .header__button{
+            z-index:110;
+            position: absolute;
+            right:20px;
+            top:20px;
+            height:20px;
+            width:20px;
+            color:#fff;
+            transition:all 0.1s ease-out;
+            box-sizing:border-box;
+            border-color:transparent;
+            background-color:transparent;
+        }
+
+        .header__button::before,
+        .header__button::after{left:0;top:0;position:absolute;content:"";display:inline-block;width:18px;height:2px;background-color:#fff;transition:all 0.2s ease-in;}
+
+        .header__button::before{transform:translate(0,4px);}
+        .header__button::after{transform:translate(0,12px);}
+
+        .header__button.active{
+            transform:rotate(45deg);
+        }
+        .header__button.active::before{transform:translate(0,7px) rotate(90deg);}
+        .header__button.active::after{transform:translate(0,7px);}
+
+        /* header__navigation */
+        .header__navigation{
+            z-index:110;
+            position:fixed;
+            width:100%;
+            height:100vh;
+            right:-100%;
+            top:0;
+            background:#111;
+            padding:110px 20px 20px 20px;
+            transition:all 0.2s ease-in;
+        }
+        .header__navigation--title{
+            color:green;
+        }
+        .header__navigation--list{
+            padding:30px 0;
+        }
+        .header__navigation--list li{
+            opacity:0;
+            margin-bottom:8px;
+        }
+        .header__navigation--list li:last-child{
+            margin-bottom:0;
+        }
+        .header__navigation--list a{
+            position: relative;
+            display: inline-block;
+            padding:4px 0;
+            font-size:2rem;
+            transition:all 0.2s ease-in;
+        }
+        .header__navigation--list a::before{
+            position: absolute;
+            bottom:2px;
+            left:0;
+            content:"";
+            display: inline-block;
+            width:0;
+            height:2px;
+            background-color:#fff;
+            transition:all 0.2s ease-in;
+        }
+        .header__navigation--list li:hover a{
+        }
+        .header__navigation--list li:hover a::before{
+            width:100%;
+        }
+
+        /* 769 이상 */
+        @media screen and (min-width:769px){
+
+            /* header__navigation */
+            .header__navigation{
+                width:80%;
+                right:-80%;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <h1 class="header__logo">
+            <a href="index.html">LOGO</a>
+        </h1>
+        <nav class="header__navigation">
+            <p class="header__navigation--title">Product</p>
+            <ul class="header__navigation--list">
+                <li class="depth1">
+                    <a href="javascript:void(0)">All Products</a>
+                </li>
+                <li class="depth1">
+                    <a href="javascript:void(0)">Hydracica</a>
+                </li>
+                <li class="depth1">
+                    <a href="javascript:void(0)">Hydrarelief</a>
+                </li>
+                <li class="depth1">
+                    <a href="javascript:void(0)">Hyasolve</a>
+                </li>
+            </ul>
+        </nav>
+        <button type="button" class="header__button">
+            <span class="blind">버튼</span>
+        </button>
+    </header>
+    <div class="dimmed"></div>
+    <!-- header -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script>
+
+        // headerBtn
+        const headerBtn = document.querySelector(".header__button");
+        
+        // buttonActive
+        function buttonActive(){
+            headerBtn.classList.toggle("active");
+            const tlNavigation = gsap.timeline();
+
+            if(!headerBtn.classList.contains("active")){
+                headerBtn.classList.remove("active");
+                tlNavigation.set(".header__navigation li",{duration:0,opacity:0})
+                            .to(".dimmed",{duration:0,opacity:0,ease:"power1.out"})
+                            .to(".header__navigation",{duration:0,xPercent:"0",ease:"power4.out"})
+            }else{
+                headerBtn.classList.add("active");
+                tlNavigation.addLabel("dimmedComplete")
+                           .to(".dimmed",{duration:0.1,opacity:1,ease:"power1.in"})
+                           .to(".header__navigation",{duration:0.2,xPercent:"-100",ease:"power2.inOut",},"dimmedComplete")
+                           .to(".header__navigation li",{duration:0.3,stagger:0.12,opacity:1,},"dimmedComplete+=0.2")
+                           .from(".header__navigation li",{y:0})
+            }
+        }
+
+        headerBtn.addEventListener("click",buttonActive);
+    </script>
+</body>
+</html>

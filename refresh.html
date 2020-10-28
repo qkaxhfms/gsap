@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>once + onEnter</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .section{
+            height:100vh;
+        }
+        .section:nth-child(1){background-color:#ccc;}
+        .section:nth-child(2){background-color:#aaa;}
+        .section:nth-child(3){background-color:#bbb;}
+
+        [class*="Wrap"]{
+            border:1px solid green;
+        }
+
+        [class*="Wrap"] span{
+            display: inline-block;
+            line-height:200px;
+            text-align: center;
+        }
+
+        .introWrap{
+            display: flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .box{
+            width:100px;
+            height:200px;
+            border:1px solid red;
+        }
+        .txt{
+            width:200px;
+            height:200px;
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- container (s) -->
+    <div class="container">
+        <section class="section introWrap">
+            <span class="txt">
+                첫 섹션 애니메이션
+            </span>
+        </section>
+
+        <section class="section">
+            <div class="boxWrap">
+                <span class="box">
+                    BOX
+                </span>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="txtWrap">
+                <span class="txt">
+                    TEXT
+                </span>
+            </div>
+        </section>
+    </div>
+    <!-- container (e) -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script src="ui_trigger.js"></script>
+    <script>
+
+        // console.log(ScrollTrigger);
+        /* 
+         * 1. 타임라인 정의
+         * 2. gsap 애니메이션 정의
+         * 3. 스크롤 트리거 호출 (애니메이션 연결)
+         * 3-1. once 사용 시 onEnter 같이 사용
+         * 
+         */ 
+
+        // loadComplete
+        let isMobile = false;
+        let isHeaderLoaded = false;
+        let container = document.querySelector(".container");
+
+        function check_device() {
+            var winW = window.innerWidth;
+
+            if (winW > 768) {
+                isMobile = false;
+                console.log("모바일 아님");
+            } else {
+                isMobile = true;
+                console.log("모바일!");
+            }
+        }
+        check_device();
+
+
+        // let setTimer = 1000;
+        // function loadComplete(){
+        //     let timer = setTimeout(()=> {
+        //         container.classList.add("loadComplete");
+        //     },setTimer);
+        // };
+
+        // if(container.classList.contains("loadComplete")){
+        //     clearTimeout(timer);
+        //     console.log("clearComplete");
+        // }
+
+        // gsap.set(container,{
+        //     delay:2,
+        //     toggleClass:"complete",
+        // })
+        // container.delay(2).classList.add("complete");
+        // intro
+        // gsap.from(container,{
+        //     delay:1.7,
+        //     opacity:0,
+        //     onToggle:(self) => {
+        //         console.log(self.isActive);
+        //     },
+        // })
+
+
+        const animateBox = gsap.timeline();
+        animateBox.to(".box",{
+            y:20,
+        })
+
+        function box_trigger(){
+            // console.log("box_trigger");
+            ScrollTrigger.create({
+                trigger:".boxWrap",
+                start:"0% 66%",
+                end:"100% 33%",
+                animation:animateBox,
+                markers:{
+                    startColor:"pink",
+                    endColor:"purple",
+                },
+                once:true,
+                onEnter: () => {
+                    console.log("box_trigger");
+                }
+
+            })
+        }
+        box_trigger();
+
+        function txt_trigger(){
+            // console.log("txt_trigger");
+            ScrollTrigger.create({
+                trigger:".txtWrap",
+                start:"0% 66%",
+                end:"100% 33%",
+                markers:{
+                    startColor:"red",
+                    endColor:"blue",
+                },
+                // once:true,
+                onEnter: () => {
+                    console.log("txt_trigger");
+                }
+            });
+        }
+        txt_trigger();
+
+    </script>
+
+</body>
+</html>
